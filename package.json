@@ -1,0 +1,22 @@
+{
+  "name": "webapp-music",
+  "version": "0.1.0",
+  "private": true,
+  "dependencies": {
+    "react": "^16.2.0",
+    "react-dom": "^16.2.0",
+    "react-scripts": "1.0.17"
+  },
+  "scripts": {
+    "start": "node scripts/customized-build start",
+    "build": "node scripts/customized-build build",
+    "test": "react-scripts test --env=jsdom",
+    "eject": "react-scripts eject"
+  },
+  "devDependencies": {
+    "poststylus": "^1.0.0",
+    "stylus": "^0.54.5",
+    "stylus-loader": "^3.0.1",
+    "webpack": "^3.10.0"
+  }
+}
