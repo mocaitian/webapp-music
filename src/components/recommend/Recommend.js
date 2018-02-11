@@ -4,7 +4,9 @@ import {getCarousel, getNewAlbum} from '@/api/recommend';
 import * as AlbumsModel from '@/model/album';
 import {CODE_SUCCESS} from '@/api/config';
 import Scroll from '@/common/scroll/Scroll';
+import Loading from '@/common/loading/Loading';
 import Swiper from 'swiper';
+import LazyLoad, {forceCheck} from 'react-lazyload';//懒加载插件，forceCheck用来当元素没有通过scroll或者resize事件加载时强制检查元素位置，这个时候如果出现在屏幕内就会被立即加载
 import 'swiper/dist/css/swiper.css';
 
 class Recommend extends React.Component {
@@ -12,6 +14,7 @@ class Recommend extends React.Component {
         super(props);
 
         this.state = {
+            loading: true,
             sliderList: [],
             newAlbums: [],
             refresh: false
@@ -54,6 +57,7 @@ class Recommend extends React.Component {
                         return new Date(b.public_time).getTime() - new Date(a.public_time).getTime();
                     })
                     this.setState({
+                        loading: false,
                         newAlbums: albumList
                     }, () => {
                         this.setState({
@@ -78,7 +82,9 @@ class Recommend extends React.Component {
             return (
                 <div className="album-wrapper" key={album.mId}>
                     <div className="left">
-                        <img src={album.img} width="100%" height="100%" alt={album.name}/>
+                        <LazyLoad>
+                            <img src={album.img} width="100%" height="100%" alt={album.name}/>
+                        </LazyLoad>
                     </div>
                     <div className="right">
                         <div className="album-name">
@@ -98,7 +104,9 @@ class Recommend extends React.Component {
 
         return (
             <div className="music-recommend">
-                <Scroll refresh={this.state.refresh}>
+                <Scroll refresh={this.state.refresh}
+                        onScroll={(e) => {
+                            forceCheck();}}>
                     <div>
                         <div className="slider-container">
                             <div className="swiper-wrapper">
@@ -124,7 +132,7 @@ class Recommend extends React.Component {
                         </div>
                     </div>
                 </Scroll>
-
+                <Loading title="正在加载..." show={this.state.loading}/>
             </div>
         )
     }
