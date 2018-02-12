@@ -3,6 +3,7 @@ import {BrowserRouter as Router, Route, Switch, Redirect, NavLink} from "react-r
 import logo from '../assets/imgs/logo.png';
 import '../assets/stylus/reset.styl';
 import './App.styl';
+import '../assets/stylus/font.styl';
 import Recommend from './recommend/Recommend';
 import Ranking from './ranking/Ranking';
 import Search from './search/Search';
