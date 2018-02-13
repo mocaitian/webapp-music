@@ -40,3 +40,11 @@
   &.active
     color: #FFD700
     border-bottom: 2px solid #FFD700
+
+
+/*页面切换动画*/
+.translate-enter
+  transform: translate3d(100%, 0, 0)
+  &.translate-enter-active
+    transition: transform .3s
+    transform: translate3d(0,0,0)
