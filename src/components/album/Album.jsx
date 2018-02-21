@@ -42,7 +42,9 @@ class Album extends React.Component {
         let albumBgDOM = ReactDOM.findDOMNode(this.refs.albumBg);
         let albumFixedBgDOM = ReactDOM.findDOMNode(this.refs.albumFixedBg);
         let playButtonWrapperDOM = ReactDOM.findDOMNode(this.refs.playButtonWrapper);
+        //y小于0表示向上滚动
         if(y < 0){
+            //滚动y值的绝对值加上Header的高度大于图片高度的时候此时已经超过了Header的底部，这个时候显示隐藏的图片
             if(Math.abs(y) + 55 > albumBgDOM.offsetHeight){
                 albumFixedBgDOM.style.display = 'block';
             } else {
