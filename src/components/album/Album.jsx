@@ -58,6 +58,14 @@ class Album extends React.Component {
         }
     }
 
+    //选择歌曲
+    selectSong(song) {
+        return (e) => {
+            this.props.setSongs([song]);
+            this.props.changeCurrentSong(song);
+        }
+    }
+
     componentDidMount() {
         this.setState({
             show: true
@@ -100,7 +108,7 @@ class Album extends React.Component {
         let album = this.state.album;
         let songs = this.state.songs.map((song) => {
             return (
-                <div className="song" key={song.id}>
+                <div className="song" key={song.id} onClick={this.selectSong(song)}>
                     <div className="song-name">{song.name}</div>
                     <div className="song-singer">{song.singer}</div>
                 </div>

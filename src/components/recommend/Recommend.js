@@ -4,7 +4,7 @@ import './Recommend.styl';
 import {getCarousel, getNewAlbum} from '@/api/recommend';
 import * as AlbumsModel from '@/model/album';
 import {CODE_SUCCESS} from '@/api/config';
-import Album from '../album/Album';
+import Album from '@/containers/Album';
 import Scroll from '@/common/scroll/Scroll';
 import Loading from '@/common/loading/Loading';
 import Swiper from 'swiper';

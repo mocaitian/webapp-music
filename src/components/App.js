@@ -7,6 +7,7 @@ import '../assets/stylus/font.styl';
 import Recommend from './recommend/Recommend';
 import Ranking from './ranking/Ranking';
 import Search from './search/Search';
+import Player from '../containers/Player';
 
 class App extends Component {
     render() {
@@ -47,6 +48,7 @@ class App extends Component {
                             <Redirect from="/" to="/recommend"/>
                         </Switch>
                     </div>
+                    <Player />
                 </div>
             </Router>
         );
