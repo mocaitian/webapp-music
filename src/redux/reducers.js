@@ -46,7 +46,7 @@ function songs(songs = initialState.songs, action){
     }
 }
 
-//合并reducer
+//合并reducer。使用combineReducers来合并reducer，需要子reducer的名字跟对应要接收的state的key一致
 const reducer = combineReducers({
     showStatus,
     song,
