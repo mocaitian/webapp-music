@@ -1,17 +1,19 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import './progress.styl';
 import PropTypes from 'prop-types';
+
+import './progress.styl';
 
 class Progress extends React.Component {
     componentDidUpdate() {
+        //组件更新后重新获取进度条总宽度
         if(!this.progressBarWidth){
             this.progressBarWidth = ReactDOM.findDOMNode(this.refs.progressBar).offsetWidth;
         }
     }
 
     componentDidMount() {
-        let progressBarDOM = ReactDOM.findNode(this.refs.progressBar);
+        let progressBarDOM = ReactDOM.findDOMNode(this.refs.progressBar);
         let progressDOM = ReactDOM.findDOMNode(this.refs.progress);
         let progressBtnDOM = ReactDOM.findDOMNode(this.refs.progressBtn);
         this.progressBarWidth = progressBarDOM.offsetWidth;
@@ -77,17 +79,17 @@ class Progress extends React.Component {
         return (
             <div className="progress-bar" ref="progressBar">
                 <div className="progress-load"></div>
-                <div className="progress" style={{width: `${progress * 100}`%}} ref="progress"></div>
+                <div className="progress" style={{width: `${progress * 100}%`}} ref="progress"></div>
                 {
                     disableButton === true ? '':
-                    <div className="progress-button" style={{left: '70px'}} ref="progressBtn"></div>
+                    <div className="progress-button" style={{left: progressButtonOffsetLeft}} ref="progressBtn"></div>
                 }
             </div>
         )
     }
 }
 
-Progress.prototype = {
+Progress.propTypes = {
     progress: PropTypes.number.isRequired,  //接收进度
     disableButton: PropTypes.bool,  //是否禁用按钮
     disableDrag: PropTypes.bool,    //是否禁用拖拽

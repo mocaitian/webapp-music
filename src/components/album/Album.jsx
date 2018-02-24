@@ -66,6 +66,15 @@ class Album extends React.Component {
         }
     }
 
+    playAll = () => {
+        console.log(this)
+        if(this.state.songs.length > 0) {
+            this.props.setSongs(this.state.songs);
+            this.props.changeCurrentSong(this.state.songs[0]);
+            this.props.showMusicPlayer(true);
+        }
+    }
+
     componentDidMount() {
         this.setState({
             show: true
@@ -126,7 +135,7 @@ class Album extends React.Component {
                         <div ref="albumFixedBg" className="album-img fixed" style={{backgroundImage: `url(${album.img})`}}>
                             <div className="filter"></div>
                         </div>
-                        <div className="play-wrapper" ref="playButtonWrapper">
+                        <div className="play-wrapper" ref="playButtonWrapper" onClick={this.playAll}>
                             <div className="play-button">
                                 <i className="icon-play"></i>
                                 <span>播放全部</span>
