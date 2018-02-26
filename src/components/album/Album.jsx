@@ -66,8 +66,8 @@ class Album extends React.Component {
         }
     }
 
+    // 使用 playAll = () => {} 这种语法时，this表示的是类的实例，如果用 playAll(){} 的话想要调用正确的this还需要在constructor中加上this.playAll = this.playAll.bind(this);
     playAll = () => {
-        console.log(this)
         if(this.state.songs.length > 0) {
             this.props.setSongs(this.state.songs);
             this.props.changeCurrentSong(this.state.songs[0]);

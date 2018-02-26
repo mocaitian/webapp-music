@@ -28,7 +28,7 @@ class Progress extends React.Component {
             progressBtnDOM.addEventListener('touchstart', (e) => {
                 let touch = e.touches[0];
                 downX = touch.clientX;
-                buttonLeft = parseInt(touch.targer.style.left, 10);
+                buttonLeft = parseInt(touch.target.style.left, 10);
             
                 if(onDragStart){
                     onDragStart();
@@ -38,7 +38,7 @@ class Progress extends React.Component {
             progressBtnDOM.addEventListener('touchmove', (e) => {
                 e.preventDefault();
 
-                let touch = e.touchers[0];
+                let touch = e.touches[0];
                 let diffX = touch.clientX - downX;
 
                 let btnLeft = buttonLeft + diffX;
