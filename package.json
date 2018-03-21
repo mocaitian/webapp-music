@@ -4,7 +4,7 @@
   "homepage": "/webapp-music/build",
   "private": true,
   "dependencies": {
-    "better-scroll": "^1.5.5",
+    "better-scroll": "^1.6.0",
     "jsonp": "^0.2.1",
     "prop-types": "^15.6.0",
     "react": "^16.2.0",
