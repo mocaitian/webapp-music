@@ -132,18 +132,22 @@ class Player extends React.Component {
 
     //播放或暂停
     playOrPause = () => {
-        if(this.audioDOM.paused){
+        if(this.state.playStatus === false) {
+            //表示第一次播放
+            if(this.first === undefined){
+                this.audioDOM.src = this.currentSong.url;
+                this.first = true;
+            }
             this.audioDOM.play();
             this.startImgRotate();
-            this.setState({
-                playStatus: true
-            })
+
+            this.setState({playStatus: true});
         } else {
             this.audioDOM.pause();
             this.stopImgRotate();
-            this.setState({
-                playStatus: false
-            })
+
+            this.setState({playStatus: false});
+
         }
     }
 
@@ -227,9 +231,11 @@ class Player extends React.Component {
             //当前歌曲发生变化
             if(this.currentSong.id !== this.props.currentSong.id){
                 this.currentSong = this.props.currentSong;
-                this.audioDOM.src = this.currentSong.url;
-                //加载资源，ios需要调用此方法
-                this.audioDOM.load();
+                if(this.audioDOM){
+                    this.audioDOM.src = this.currentSong.url;
+                    //加载资源，ios需要调用此方法
+                    this.audioDOM.load();
+                }
             }
         }
         let song = this.props.currentSong;
@@ -307,8 +313,8 @@ class Player extends React.Component {
                         <audio ref="audio"></audio>
                     </div>
                 </CSSTransition>
-                <MiniPlayer 
-                    song={song} 
+                <MiniPlayer
+                    song={song}
                     progress={this.state.playProgress}
                     playOrPause={this.playOrPause}
                     next={this.next}
