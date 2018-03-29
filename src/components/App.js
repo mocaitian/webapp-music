@@ -6,6 +6,7 @@ import './App.styl';
 import '../assets/stylus/font.styl';
 import Recommend from './recommend/Recommend';
 import Ranking from './ranking/Ranking';
+import SingerList from './singer/SingerList';
 import Search from './search/Search';
 // import Player from '../containers/Player';
 import MusicPlayer from './play/MusicPlayer';
@@ -32,6 +33,11 @@ class App extends Component {
                             </NavLink>
                         </div>
                         <div className="tab-item">
+                            <NavLink to="/singer" className="nav-link">
+                                <span>歌手</span>
+                            </NavLink>
+                        </div>
+                        <div className="tab-item">
                             <NavLink to="/search" className="nav-link">
                                 <span>搜索</span>
                             </NavLink>
@@ -44,6 +50,7 @@ class App extends Component {
 
                         <Switch>
                             <Route path="/recommend" component={Recommend}/>
+                            <Route path="/singer" component={SingerList}/>
                             <Route path="/ranking" component={Ranking}/>
                             <Route path="/search" component={Search}/>
                             <Redirect from="/" to="/recommend"/>
