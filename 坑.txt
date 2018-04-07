@@ -1,0 +1,7 @@
+1.onClick={this.playAll}
+使用 playAll = () => {console.log(this)} 这种语法时，this表示的是类的实例，如果用 playAll(){} 的话想要调用正确的this还需要在constructor中加上this.playAll = this.playAll.bind(this);
+
+使用onClick={() => {this.playAll())}这种方式调用时，可以
+playAll = () => {console.log(this)}定义语法，也可以playAll (){console.log(this)};
+
+注意以上两个onclick调用的方式不同

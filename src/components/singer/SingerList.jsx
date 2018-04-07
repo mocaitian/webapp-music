@@ -1,5 +1,7 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {Route} from 'react-router-dom';
+import Singer from '@/containers/Singer';
 import LazyLoad, {forceCheck} from 'react-lazyload';
 import Scroll from '@/common/scroll/Scroll';
 import Loading from '@/common/loading/Loading';
@@ -139,7 +141,14 @@ class SingerList extends React.Component {
         })
     }
 
+    toDetail = (url) => {
+        this.props.history.push({
+            pathname: url
+        });
+    }
+
     render() {
+        let {match} = this.props;
         let tags = this.types.map(type => (
             <a key={type.key}
                 className={type.key === this.state.typeKey ? 'choose' : ''}
@@ -154,7 +163,8 @@ class SingerList extends React.Component {
         ));
         let singers = this.state.singers.map(singer => {
             return (
-                <div className="singer-wraper" key={singer.id}>
+                <div className="singer-wrapper" key={singer.id}
+                    onClick={() => {this.toDetail(`${match.url + '/' + singer.mId}`)}}>
                     <div className="singer-img">
                         <LazyLoad height={50}>
                             <img src={singer.img} width="100%" height="100%" alt={singer.name}
@@ -193,6 +203,7 @@ class SingerList extends React.Component {
                     </Scroll>
                 </div>
                 <Loading title="正在加载..." show={this.state.loading} />
+                <Route path={`${match.url + '/:id'}`} component={Singer} />
             </div>
         );
     }
