@@ -92,14 +92,6 @@ class Player extends React.Component {
         this.audioDOM.addEventListener("error", () => {alert("加载歌曲出错！")}, false);
     }
 
-    componentDidUpdate(){
-        //兼容手机端canplay事件触发后第一次调用play()方法无法自动播放的问题
-        if(this.isFirstPlay === true) {
-            this.audioDOM.play();
-            this.isFirstPlay = false;
-        }
-    }
-
     //开始旋转图片
     startImgRotate = () => {
         if(this.singerImgDOM.className.indexOf('rotate') === -1) {

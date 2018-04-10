@@ -7,7 +7,8 @@ import '../assets/stylus/font.styl';
 import Recommend from './recommend/Recommend';
 import Ranking from './ranking/Ranking';
 import SingerList from './singer/SingerList';
-import Search from './search/Search';
+// import Search from './search/Search';
+import Search from '../containers/Search';
 // import Player from '../containers/Player';
 import MusicPlayer from './play/MusicPlayer';
 

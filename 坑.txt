@@ -5,3 +5,7 @@
 playAll = () => {console.log(this)}定义语法，也可以playAll (){console.log(this)};
 
 注意以上两个onclick调用的方式不同
+
+
+
+React的input文本框需要设置value={this.state.w} onChange={this.hanleInput},hanleInput改变input的this.state.w

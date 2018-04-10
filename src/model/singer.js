@@ -7,6 +7,9 @@ export class Singer {
     }
 }
 
+/*
+ 通过搜索结果返回歌手对象函数
+ */
 export function createSingerBySearch(data){
     return new Singer(
         data.singerid,

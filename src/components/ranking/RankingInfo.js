@@ -190,6 +190,7 @@ class RankingInfo extends React.Component {
                                 </div>
                             </Scroll>
                         </div>
+                        <Loading title="正在加载..." show={this.state.loading}/>
                     </div>
                     <div className="music-ico" ref="musicIco1">
                         <div className="icon-fe-music"></div>
