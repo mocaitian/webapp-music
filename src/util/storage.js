@@ -12,6 +12,13 @@ let localStorage = {
     getSongs(){
         let songs = window.localStorage.getItem('songs');
         return songs ? JSON.parse(songs) : [];
+    },
+    setSkin(key){
+        window.localStorage.setItem('skin', key);
+    },
+    getSkin(){
+        let skin = window.localStorage.getItem('skin');
+        return !skin ? 'coolBlack' : skin;
     }
 }
 

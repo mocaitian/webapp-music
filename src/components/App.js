@@ -11,18 +11,28 @@ import SingerList from './singer/SingerList';
 import Search from '../containers/Search';
 // import Player from '../containers/Player';
 import MusicPlayer from './play/MusicPlayer';
+import MusicMenu from './setting/Menu';
 
 class App extends Component {
+    constructor(props){
+        super(props);
+
+        this.state = {
+            menuShow: false//控制是否显示菜单
+        }
+    }
+
     render() {
         return (
             <Router>
-                <div className="app">
-                    <header className="app-header">
+                <div className="app skin-app">
+                    <header className="app-header skin-app-header">
+                        <i className="icon-et-more app-more" onClick={() => {this.setState({menuShow: true});}}></i>
                         <img src={logo} alt="logo" className="app-logo"/>
                         <h1 className="app-title">炸鸡音乐</h1>
                     </header>
 
-                    <div className="music-tab">
+                    <div className="music-tab skin-music-tab">
                         <div className="tab-item selected">
                             <NavLink to="/recommend" className="nav-link">
                                 <span>推荐</span>
@@ -58,6 +68,8 @@ class App extends Component {
                         </Switch>
                     </div>
                     <MusicPlayer />
+                    <MusicMenu show={this.state.menuShow}
+                               closeMenu={() => {this.setState({menuShow: false});}}/>
                 </div>
             </Router>
         );

@@ -138,7 +138,7 @@ class Recommend extends React.Component {
                             <div className="swiper-pagination"></div>
                         </div>
                         <div className="album-container">
-                            <h1 className="title">最新专辑</h1>
+                            <h1 className="title skin-album-wrapper">最新专辑</h1>
                             <div className="album-list">
                                 {albums}
                             </div>

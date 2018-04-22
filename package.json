@@ -1,7 +1,6 @@
 {
   "name": "webapp-music",
   "version": "0.1.0",
-  "homepage": "/webapp-music/build",
   "private": true,
   "dependencies": {
     "better-scroll": "^1.6.0",
