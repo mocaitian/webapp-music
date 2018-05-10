@@ -207,7 +207,15 @@ class Search extends React.Component {
                         <i className="icon-search"></i>
                         <input type="text" className="search-input" placeholder="搜索歌曲、歌手、专辑"
                                value={this.state.w}
-                               onChange={this.handleInput}/>
+                               onChange={this.handleInput}
+                               onKeyUp={(e) => {this.search(e.currentTarget.value);}}
+                               onKeyDown={
+                                (e) => {
+                                    if (e.keyCode === 13) {
+                                        this.search(e.currentTarget.value);
+                                    }
+                                }
+                                }/>
                     </div>
                     <div className="cancel-button" style={{display: this.state.w ? 'block': 'none'}}
                         onClick={() => {this.setState({w: '',singer: {},album: {},songs: []})}}>取消</div>
